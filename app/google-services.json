@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "708794350901",
+    "project_id": "lalishop-app",
+    "storage_bucket": "lalishop-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:708794350901:android:2d1246b88e067eea1f207c",
+        "android_client_info": {
+          "package_name": "com.example.lalishop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "708794350901-dhvsheube72259m26hhg9qqh0077nilp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZq7ON6Vz_QrBNDP44yp2UG0VsxAVc7BA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "708794350901-dhvsheube72259m26hhg9qqh0077nilp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
