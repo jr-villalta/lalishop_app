@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.lalishop.Modelo.ModeloProductos;
 import com.example.lalishop.R;
 
@@ -30,10 +31,9 @@ public class AdaptadorProductos extends ArrayAdapter<ModeloProductos> {
         TextView Precio = view.findViewById(R.id.TxtPrecioItem);
         ImageView Imagen = view.findViewById(R.id.ImgItem);
 
-        //Titulo.setText(listaproductos.get(position).getNombre_producto());
-        //Precio.setText(listaproductos.get(position).getPrecio_producto());
-
-        //Glide.with(getContext()).load(listaproductos.get(position).getImagen()).into(Imagen);
+        Titulo.setText(listaproductos.get(position).getNombreProducto());
+        Precio.setText("Precio: "+listaproductos.get(position).getPrecioProducto());
+        Glide.with(getContext()).load(listaproductos.get(position).getImagenProducto()).into(Imagen);
 
         return view;
 

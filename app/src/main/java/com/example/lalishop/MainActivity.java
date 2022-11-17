@@ -22,6 +22,11 @@ public class MainActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
+        inicio();
+
+    }
+
+    public void inicio(){
         //VERIFICAR QUE SE TENGA CONEXION A INTERNET
         ConnectivityManager cm =
                 (ConnectivityManager)MainActivity.this.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -41,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
         }else{
             cargarSinInternetActivity();
         }
-
     }
 
     public void cargarSinInternetActivity(){
@@ -49,6 +53,4 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-
-
 }
