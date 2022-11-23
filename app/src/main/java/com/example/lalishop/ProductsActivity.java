@@ -2,7 +2,10 @@ package com.example.lalishop;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,6 +20,7 @@ import com.example.lalishop.Modelo.ModeloProductos;
 import com.example.lalishop.Modelo.ServiceAPI;
 import com.example.lalishop.ServiceUtils.ApiDireccion;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,11 +44,12 @@ public class ProductsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_products);
 
-        mAuth = FirebaseAuth.getInstance();
         listproductos = findViewById(R.id.ListProductos);
         spinercategoria = findViewById(R.id.SpinerCategoriaProducto);
 
         getCategorias();
+
+        Log.d("Respuesta Produx", MainActivity.IDUsuario);
 
         spinercategoria.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -57,6 +62,17 @@ public class ProductsActivity extends AppCompatActivity {
 
             }
         });
+
+        listproductos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                producto(i);
+
+            }
+        });
+
+        Conexion();
 
     }
 
@@ -130,11 +146,48 @@ public class ProductsActivity extends AppCompatActivity {
 
     }
 
-    public void cerrarsesion(View view){
+    public void producto(int i){
+
+        Intent intent = new Intent(getApplicationContext(), InfoProductoActivity.class);
+        intent.putExtra("ID", ListProductos.get(i).getId());
+        intent.putExtra("Nombre", ListProductos.get(i).getNombreProducto());
+        intent.putExtra("Imagen", ListProductos.get(i).getImagenProducto());
+        intent.putExtra("Precio", ListProductos.get(i).getPrecioProducto());
+        intent.putExtra("Stock", ListProductos.get(i).getStockProducto());
+        intent.putExtra("Categoria", ListProductos.get(i).getCategoria());
+        intent.putExtra("Descripcion", ListProductos.get(i).getDescripcionProducto());
+        startActivity(intent);
+
+    }
+
+    public void carrito(View view){
+
+        startActivity(new Intent(getApplicationContext(),CarritoActivity.class));
+
+    }
+
+    public void cerrarsesionproduts(View view){
+
         mAuth.signOut();
         finish();
 
         startActivity(new Intent(getApplicationContext(),MainActivity.class));
+    }
+
+    public void Conexion(){
+        //VERIFICAR QUE SE TENGA CONEXION A INTERNET
+        ConnectivityManager cm =
+                (ConnectivityManager)ProductsActivity.this.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        boolean isConnected = activeNetwork != null &&
+                activeNetwork.isConnectedOrConnecting();
+
+        if(!isConnected){
+            Intent intent = new Intent(this, SinInternetActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 
 }

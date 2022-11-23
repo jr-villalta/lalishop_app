@@ -33,6 +33,7 @@ public class AdaptadorProductos extends ArrayAdapter<ModeloProductos> {
 
         Titulo.setText(listaproductos.get(position).getNombreProducto());
         Precio.setText("Precio: "+listaproductos.get(position).getPrecioProducto());
+
         Glide.with(getContext()).load(listaproductos.get(position).getImagenProducto()).into(Imagen);
 
         return view;

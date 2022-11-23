@@ -16,6 +16,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -60,8 +61,17 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()){
-                        Toast.makeText(LoginActivity.this, "El usuario inició sesión con éxito\n", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(LoginActivity.this, ProductsActivity.class));
+
+                        FirebaseUser currentUser = mAuth.getCurrentUser();
+
+                        if(currentUser != null){
+
+                            MainActivity.IDUsuario=currentUser.getUid();
+                            Toast.makeText(LoginActivity.this, "El usuario inició sesión con éxito\n", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(LoginActivity.this, ProductsActivity.class));
+
+                        }
+
                     }else{
                         Toast.makeText(LoginActivity.this, "Error de inicio de sesión\n: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
