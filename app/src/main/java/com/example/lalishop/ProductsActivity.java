@@ -2,7 +2,10 @@ package com.example.lalishop;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -57,6 +60,17 @@ public class ProductsActivity extends AppCompatActivity {
 
             }
         });
+
+        listproductos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                productos(i);
+
+            }
+        });
+
+        Conexion();
 
     }
 
@@ -130,11 +144,47 @@ public class ProductsActivity extends AppCompatActivity {
 
     }
 
+    public void productos(int i){
+
+        Intent intent = new Intent(getApplicationContext(), InfoProductoActivity.class);
+        intent.putExtra("ID", ListProductos.get(i).getId());
+        intent.putExtra("Nombre", ListProductos.get(i).getNombreProducto());
+        intent.putExtra("Imagen", ListProductos.get(i).getImagenProducto());
+        intent.putExtra("Precio", ListProductos.get(i).getPrecioProducto());
+        intent.putExtra("Stock", ListProductos.get(i).getStockProducto());
+        intent.putExtra("Categoria", ListProductos.get(i).getCategoria());
+        intent.putExtra("Descripcion", ListProductos.get(i).getDescripcionProducto());
+        startActivity(intent);
+
+    }
+
+    public void carrito(View view){
+
+        startActivity(new Intent(getApplicationContext(),CarritoActivity.class));
+
+    }
+
     public void cerrarsesion(View view){
         mAuth.signOut();
         finish();
 
         startActivity(new Intent(getApplicationContext(),MainActivity.class));
+    }
+
+    public void Conexion(){
+        //VERIFICAR QUE SE TENGA CONEXION A INTERNET
+        ConnectivityManager cm =
+                (ConnectivityManager)ProductsActivity.this.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        boolean isConnected = activeNetwork != null &&
+                activeNetwork.isConnectedOrConnecting();
+
+        if(!isConnected){
+            Intent intent = new Intent(this, SinInternetActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 
 }

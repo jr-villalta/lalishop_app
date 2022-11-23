@@ -19,7 +19,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/BtnIniciarSesionLogin"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginRight="5dp"
@@ -29,7 +29,7 @@
             android:onClick="iniciarsesion"/>
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/BtnregistrarLogin"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="5dp"
