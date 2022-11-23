@@ -13,7 +13,9 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.lalishop.Adaptador.CategoryAdapter;
+import com.example.lalishop.Adaptador.RecentlyViewedAdapter;
 import com.example.lalishop.Modelo.Category;
+import com.example.lalishop.Modelo.RecentlyViewed;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -29,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
     CategoryAdapter categoryAdapter;
     List<Category> categoryList;
 
+    RecentlyViewedAdapter recentlyViewedAdapter;
+    List<RecentlyViewed> recentlyViewedList;
+
     TextView allCategory;
 
     @Override
@@ -38,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
         categoryRecyclerView = findViewById(R.id.categoryRecycler);
         allCategory = findViewById(R.id.allCategoryImage);
+        recentlyViewedRecycler = findViewById(R.id.recently_item);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -61,7 +67,12 @@ public class MainActivity extends AppCompatActivity {
         categoryList.add(new Category(7, R.drawable.shirt));
         categoryList.add(new Category(8, R.drawable.shirt));
 
+        recentlyViewedList = new ArrayList<>();
+        recentlyViewedList.add(new RecentlyViewed("Watermelon", "Watermelon has high water content and also provides some fiber.", "₹ 80", "drawable/b1.jpg"));
+        recentlyViewedList.add(new RecentlyViewed("Papaya", "Papayas are spherical or pear-shaped fruits that can be as long as 20 inches.", "₹ 85", "drawable/b1.jpg" ));
+
         setCategoryRecycler(categoryList);
+        setRecentlyViewedRecycler(recentlyViewedList);
 
 
     }
@@ -99,5 +110,12 @@ public class MainActivity extends AppCompatActivity {
         categoryRecyclerView.setLayoutManager(layoutManager);
         categoryAdapter = new CategoryAdapter(this,categoryDataList);
         categoryRecyclerView.setAdapter(categoryAdapter);
+    }
+
+    private void setRecentlyViewedRecycler(List<RecentlyViewed> recentlyViewedDataList) {
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        recentlyViewedRecycler.setLayoutManager(layoutManager);
+        recentlyViewedAdapter = new RecentlyViewedAdapter(this,recentlyViewedDataList);
+        recentlyViewedRecycler.setAdapter(recentlyViewedAdapter);
     }
 }
