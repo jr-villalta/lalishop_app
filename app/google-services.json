@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "708794350901",
-    "project_id": "lalishop-app",
-    "storage_bucket": "lalishop-app.appspot.com"
+    "project_number": "550354599584",
+    "project_id": "lalishop-5194f",
+    "storage_bucket": "lalishop-5194f.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:708794350901:android:2d1246b88e067eea1f207c",
+        "mobilesdk_app_id": "1:550354599584:android:cb9435f92d1f79bda1d3c5",
         "android_client_info": {
           "package_name": "com.example.lalishop"
         }
       },
       "oauth_client": [
         {
-          "client_id": "708794350901-dhvsheube72259m26hhg9qqh0077nilp.apps.googleusercontent.com",
+          "client_id": "550354599584-p1qia34oohrm8hme8oepfbgqr4ob8uu9.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDZq7ON6Vz_QrBNDP44yp2UG0VsxAVc7BA"
+          "current_key": "AIzaSyC7iYc9pMNIOYVbhhsc3_KuQJ1-WLpYZv4"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "708794350901-dhvsheube72259m26hhg9qqh0077nilp.apps.googleusercontent.com",
+              "client_id": "550354599584-p1qia34oohrm8hme8oepfbgqr4ob8uu9.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
