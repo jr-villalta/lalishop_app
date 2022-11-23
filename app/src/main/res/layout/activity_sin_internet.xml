@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".SinInternetActivity">
 
     <TextView
@@ -11,6 +12,7 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="Para usar la App, activa los datos móviles o conéctate a una red WI-FI"
+        android:textAlignment="center"
         android:textColor="#000000"
         android:textColorHint="#000000"
         android:textSize="34sp"

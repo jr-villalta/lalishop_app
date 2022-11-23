@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical"
     tools:context=".ProductsActivity">
 
@@ -29,8 +30,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                app:srcCompat="@android:drawable/ic_lock_power_off"
-                android:onClick="cerrarsesion"/>
+                android:onClick="cerrarsesion"
+                app:srcCompat="@android:drawable/ic_lock_power_off" />
 
             <TextView
                 android:id="@+id/textView3"
@@ -39,6 +40,7 @@
                 android:layout_weight="1"
                 android:text="Lista Productos"
                 android:textAlignment="center"
+                android:textColor="@color/color4"
                 android:textSize="34sp" />
 
             <ImageButton
